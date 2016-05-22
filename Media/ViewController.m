@@ -85,24 +85,21 @@ typedef enum {
 
 -(void)positionWithScroll:(UIScrollView*)scrollView
 {
-    UIImageView * imageView = (UIImageView*)scrollView.subviews[0];
-    if (CGRectGetHeight(imageView.frame)>CGRectGetHeight(scrollView.frame)) {
+    UIImageView * imgView = (UIImageView*)scrollView.subviews[0];
+    if (CGRectGetHeight(imgView.frame)>CGRectGetHeight(scrollView.frame)) {
         //如果放大后的图片尺寸高度大于scroll的高度则让其偏移量为零,并且 是对称图形
-        imageView.center = scrollView.center;
-        CGRect rect = imageView.frame;
+        CGRect rect = imgView.frame;
         rect.origin.y = 0;
-        imageView.frame = rect;
+        imgView.frame = rect;
          scrollView.contentOffset=CGPointMake(0, 0);
     }else{
-        //否则将是中心对称图形
-        imageView.center = scrollView.center;
+        //否则将是中心对称图形  如果是多个scrollView 的话就不是这样了
+        
+        
         
     }
 
-}
--(BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
-{
-    return YES;
+    imgView.center =CGPointMake(CGRectGetWidth(scrollView.bounds)/2,CGRectGetHeight(scrollView.bounds)/2);
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
