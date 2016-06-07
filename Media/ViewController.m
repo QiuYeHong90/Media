@@ -85,6 +85,7 @@ typedef enum {
 
 -(void)positionWithScroll:(UIScrollView*)scrollView
 {
+    //haixign是否是 是打发 
     UIImageView * imgView = (UIImageView*)scrollView.subviews[0];
     if (CGRectGetHeight(imgView.frame)>CGRectGetHeight(scrollView.frame)) {
         //如果放大后的图片尺寸高度大于scroll的高度则让其偏移量为零,并且 是对称图形
